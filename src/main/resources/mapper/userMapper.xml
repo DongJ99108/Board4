@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 
+Window - preferences - 검색 : xml
+  -> xml(Wild Web Developer) -> 오른쪽 탭에서
+  체크 Download XML Resource .... - Apply 클릭
+namespace = "com.green.user.mapper.UserMapper" : interface 위치 
+-->
+<mapper namespace="com.green.user.mapper.UserMapper">
+	<!-- 사용자 추가 -->
+	<insert id="insertUser">
+	
+	INSERT INTO TUSER (
+	    USERID,
+	    PASSWORD,
+	    USERNAME,
+	    EMAIL,
+	    UPOINT,
+	    REGDATE
+	) VALUES ( 	#{  userid  },
+			    #{ password },
+			    #{ username },
+			    #{   email  },
+			    1000         ,
+			    sysdate      )
+	  
+	</insert>
+	
+	<!-- 사용자 목록 -->
+	<select id="getUserList">
+	  SELECT
+		    USERID,
+		    USERNAME,
+		    EMAIL,
+		    UPOINT,
+		    TO_CHAR(REGDATE, 'YYYY-MM-DD') REGDATE
+		FROM
+		    TUSER
+		ORDER BY USERID ASC
+	</select>
+	
+	<select id="getUser">
+	  SELECT
+		    USERID,
+		    PASSWORD,
+		    USERNAME,
+		    EMAIL,
+		    UPOINT,
+		    TO_CHAR(REGDATE, 'YYYY-MM-DD HH24:MI:SS') REGDATE
+		FROM
+		    TUSER
+		WHERE
+			USERID = #{ userid }
+	</select>
+	
+	<!-- 아이디 중복확인 -->
+	<select id="getIdDupCheck">
+	
+	SELECT  USERID,
+		    PASSWORD,
+		    USERNAME,
+		    EMAIL,
+		    UPOINT,
+		    TO_CHAR(REGDATE, 'YYYY-MM-DD HH24:MI:SS') REGDATE
+	 FROM   TUSER
+	 WHERE  USERID = #{ userid }
+	  
+	</select>
+
+	<!-- 사용자 삭제 -->
+	<delete id="deleteUser">
+	  DELETE FROM TUSER WHERE USERID = #{ userid }
+	</delete>
+	
+	<update id="updateUser">
+	  
+	  UPDATE TUSER
+	   SET   PASSWORD =  #{ password },
+	         USERNAME =  #{ username },
+	         EMAIL    =  #{ email }
+	   WHERE USERID   =  #{ userid }
+	  
+	  
+	</update>
+	
+	
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

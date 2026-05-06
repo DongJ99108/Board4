@@ -33,3 +33,35 @@
   }
   
   .red{ color:red; }
+  
+  .menu {
+    td {
+      padding:0;
+    }
+    a { 
+      display : block;
+      padding:10px;
+      color:white; 
+      background-color: black;
+	    &:hover{
+	      background-color : #04AA6D;
+	      color : white;
+	      text-decoration : none;
+    	}
+      }
+   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

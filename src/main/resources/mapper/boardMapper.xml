@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 
+Window - preferences - 검색 : xml
+  -> xml(Wild Web Developer) -> 오른쪽 탭에서
+  체크 Download XML Resource .... - Apply 클릭
+namespace = "com.green.menus.mapper.MenuMapper" : interface 위치 
+-->
+<mapper namespace="com.green.board.mapper.BoardMapper">
+  
+  <select id="getBoardList"
+          resultType="com.green.board.dto.BoardDto">
+  SELECT 
+	    IDX,
+	    MENU_ID,
+	    TITLE,
+	    WRITER,
+	    TO_CHAR(REGDATE, 'YYYY-MM-DD') REGDATE,
+	    HIT
+	FROM BOARD
+	WHERE MENU_ID = #{ menu_id }
+	ORDER BY IDX DESC
+    
+  </select>
+  
+</mapper>
+
+
+
+
+

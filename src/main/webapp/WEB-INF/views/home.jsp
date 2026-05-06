@@ -16,11 +16,23 @@
     <div><a href="/Menus/WriteForm">새 메뉴추가</a></div>
     <div><a href="/Menus/WriteForm2">새 메뉴추가2</a></div>
     <div><a href="/Menus/List">메뉴목록</a></div>
+    
     <div>&nbsp;</div>
+    
     <div><a href="/Users/List">사용자 목록</a></div>
     <div><a href="/Users/WriteForm">사용자 추가</a></div>
-    <div>&nbsp;</div>
     <div><a href="/Users/IdDupCheck2?userid=aaa" target="_blank">아이디 중복 테스트</a></div>
+    
+    <div>&nbsp;</div>
+    
+    <div><a href="/Board/List?menu_id=MENU01">게시글 목록</a></div>
+    <div><a href="/Board/WriteForm?menu_id=MENU01">게시글 추가</a></div>
+    
+    <div>&nbsp;</div>
+    
+    <div><a href=""></a></div>
+    <div><a href=""></a></div>
+    
   </main>
   
 </body>

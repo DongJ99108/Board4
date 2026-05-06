@@ -152,7 +152,8 @@
     btnDup1El.addEventListener('click', function() {
     	// alert('ok1')
     	// 새 창(새 브라우저)을 띄운다
-    	let url      = '/Users/DupCheckWindow';
+    	// let url      = '/Users/DupCheckWindow?first=true';
+    	let url      = '/Users/DupCheckWindow'; // session 활용방식
     	let target   = 'dupcheck'; // 새 창 이름(이름을 부여하면 새창 버튼을 여러번 눌러도 한개만 열림)
     	let feature  = 'left=800,top=200,width=400,height=350';
     	window.open( url, target , feature )

@@ -74,18 +74,21 @@ namespace = "com.green.user.mapper.UserMapper" : interface 위치
 	  DELETE FROM TUSER WHERE USERID = #{ userid }
 	</delete>
 	
-	<update id="updateUser">
+	<!-- 사용자 수정 : oldpwd, arg0, param1 (원래는 직접적인 변수명을 사용하지 못하고 arg0, param1 등을 통해서 간접적으로 썼지만 자바17부터는 직접적인 변수명도 씹가능  -->
+	<!-- 밑에 중괄호 안을 map.password 등으로 쓸 경우에 오류가 난다. map.을 빼고 담백하게 그냥 적자 -->
+	<update id="updateUser2">
 	  
 	  UPDATE TUSER
 	   SET   PASSWORD =  #{ password },
 	         USERNAME =  #{ username },
-	         EMAIL    =  #{ email }
-	   WHERE USERID   =  #{ userid }
+	         EMAIL    =  #{ email    }
+	   WHERE USERID   =  #{ userid   }
+	    AND  PASSWORD =  #{ oldpwd   }
 	  
 	  
 	</update>
 	
-	
+	<!-- 사용자 수정 : map -->
   
 </mapper>
 

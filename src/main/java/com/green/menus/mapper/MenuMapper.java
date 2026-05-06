@@ -25,6 +25,8 @@ public interface MenuMapper {
 
 
 	void insertMenu2(MenuDTO menuDTO);
+
+
 	
 }
 

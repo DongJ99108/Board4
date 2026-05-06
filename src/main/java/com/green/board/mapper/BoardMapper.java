@@ -14,4 +14,10 @@ public interface BoardMapper {
 
 	List<BoardDto> getBoardList2(String string);
 
+	void deleteBoard(BoardDto boardDto);
+
+	BoardDto getBoard(BoardDto boardDto);
+
+	void incHit(BoardDto boardDto);
+
 }

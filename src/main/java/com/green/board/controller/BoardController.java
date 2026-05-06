@@ -28,20 +28,20 @@ public class BoardController {
 	// /Board/List
 	@RequestMapping("/List")
 	public ModelAndView list( MenuDTO menuDto ) {
-		// 메뉴 전체 목록 조회
+		// 메뉴 전체 목록 조회 - menus.jsp
 		
 		List<MenuDTO> menuList = menuMapper.getMenuList();
 		log.info("menusList:" + menuList); // 위에 Slf4j 덕분에 쓸 수 있는거임 log다음에 .을 찍으면 어떤 것을 쓸 수 있는지 볼 수 있음
 		
 		
-		// 게시물 목록 조회
+		// 게시물 목록 조회 - list.jsp
 		List<BoardDto> boardList = boardMapper.getBoardList( menuDto );
 		log.info("boardList:" + boardList); // 위에 Slf4j 덕분에 쓸 수 있는거임 log다음에 .을 찍으면 어떤 것을 쓸 수 있는지 볼 수 있음
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/list");
-		mv.addObject("boardList", boardList);
 		mv.addObject("menuList", menuList);
+		mv.addObject("boardList", boardList);
 		return mv;
 	}
 

@@ -30,9 +30,6 @@
     
     <div>&nbsp;</div>
     
-    <div><a href=""></a></div>
-    <div><a href=""></a></div>
-    
   </main>
   
 </body>

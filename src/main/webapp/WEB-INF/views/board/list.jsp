@@ -41,30 +41,7 @@
     margin-bottom : 150px
   }
   
- /*  #table1 {
-    td {
-      &:nth-of-type(1) {
-        width : 150px;
-        background : black;
-        color : white;
-      }
-      &:nth-of-type(2) {
-        width : 150px;
-        background : white;
-        color : black;
-      }
-      &:nth-of-type(3) {
-        width : 150px;
-        background : black;
-        color : white;
-      }
-      &:nth-of-type(4) {
-        width : 150px;
-        background : black;
-        color : white;
-      }
-    }
-  } */
+  .menu td > a.${menu_id} {background-color : #04AA6D;}
   
 </style>
 
@@ -76,7 +53,7 @@
 	  <%@include file="/WEB-INF/include/menus.jsp" %>
 	
 	  
-	  <h2>게시물 목록</h2>
+	  <h2>${menu.menu_name }게시물 목록</h2>
 	  <table id="table1" class="table table-hover">
 	    <tr>
 	      <td>버노</td>

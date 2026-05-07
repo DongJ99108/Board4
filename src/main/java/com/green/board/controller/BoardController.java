@@ -12,6 +12,7 @@ import com.green.board.mapper.BoardMapper;
 import com.green.menus.dto.MenuDTO;
 import com.green.menus.mapper.MenuMapper;
 
+import ch.qos.logback.core.model.Model;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -33,19 +34,21 @@ public class BoardController {
 		List<MenuDTO> menuList = menuMapper.getMenuList();
 		log.info("menusList:" + menuList); // 위에 Slf4j 덕분에 쓸 수 있는거임 log다음에 .을 찍으면 어떤 것을 쓸 수 있는지 볼 수 있음
 		
-		
 		// 게시물 목록 조회 - list.jsp
 		List<BoardDto> boardList = boardMapper.getBoardList( menuDto );
 		log.info("boardList:" + boardList); // 위에 Slf4j 덕분에 쓸 수 있는거임 log다음에 .을 찍으면 어떤 것을 쓸 수 있는지 볼 수 있음
 		
 		// 넘어온 menu_id
 		String menu_id = menuDto.getMenu_id();
+		MenuDTO menu   = menuMapper.getMenu(menuDto);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/list");
 		mv.addObject("menuList", menuList);
 		mv.addObject("boardList", boardList);
-		mv.addObject("menu_id", menu_id);
+		mv.addObject("menu_id", menu_id); // 현재 메뉴 정보
+		mv.addObject("menu", menu);       // 현재 메뉴 전체 정보
+		System.out.println();
 		return mv;
 	}
 	@RequestMapping("/Delete")
@@ -74,6 +77,9 @@ public class BoardController {
 		System.out.println( "board:" + board );
 		// board:BoardDto [idx=1, menu_=null, title=JAVA Hello, writer=JAVA, regdate=2026-05-04 15:24:06, hit=0]
 		
+		// content 안에 있는 엔터 \n 을 <br> 로 변경 -> content
+		board.setContent( board.getContent().replace("\n", "<br>") );
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/view");
 		mv.addObject("menuList", menuList);
@@ -89,21 +95,22 @@ public class BoardController {
 		
 		System.out.println("?/Board/WriteForm boardDto:" + boardDto);
 		String menu_id = boardDto.getMenu_id();
+		String menu_name = menuMapper.getMenu_name(menu_id);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/write");
 		mv.addObject( "menu_id", menu_id );
+		mv.addObject( "menu_name", menu_name );
 		mv.addObject("menuList", menuList);
 		return mv;
 	}
 	
 	// /Board/Write?menu_id=MENU01&title=a&content=a&writer=a
 	@RequestMapping("/Write")
-	public ModelAndView write( BoardDto boardDto ) {
+	public ModelAndView write( BoardDto boardDto, Model model ) {
 		
 		
-		
-		System.out.println( "write boardDto: " + boardDto );
+		// System.out.println( "write boardDto: " + boardDto );
 		// ?/Board/WriteForm boardDto:BoardDto(idx=0, menu_id=MENU01, title=null, content=null, writer=null, regdate=null, hit=0)
 		
 		// db 저장
@@ -114,6 +121,8 @@ public class BoardController {
 		// 페이지 이동
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName( "redirect:/Board/List?menu_id=" + menu_id );
+		
+		
 		return mv;
 	}
 

@@ -44,7 +44,7 @@
   <main>
     <%@include file="/WEB-INF/include/menus.jsp" %>
   
-    <h2>새 글 쓰기</h2>
+    <h2>${menu_name }새 글 쓰기</h2>
     <form action="/Board/Write" method="post">
     <input type="hidden" name="menu_id" value="${ menu_id }" />
       <table id="table1">
@@ -66,8 +66,7 @@
           <td colspan="2">
             <input type="submit" value="추가" />
             <input type="button" value="목록" 
-             onclick="location.href='/Users/List'"
-            />
+             onclick="location.href='/Board/List?menu_id=${menu_id }'"/>
           </td>
         </tr>
       </table>

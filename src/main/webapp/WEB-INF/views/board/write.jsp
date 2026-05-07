@@ -10,6 +10,7 @@
 
 <style>
   table { width:100%; }
+  #table1 { margin-bottom:150px;}
   td {
     padding: 5px 10px;
     text-align : center;
@@ -32,15 +33,21 @@
   input[name=userid] {
     width : 81.81%;
   }
+  textarea {
+    width  : 100%;
+    height : 300px;
+  }
 
 </style>
 </head>
 <body>
   <main>
+    <%@include file="/WEB-INF/include/menus.jsp" %>
+  
     <h2>새 글 쓰기</h2>
     <form action="/Board/Write" method="post">
     <input type="hidden" name="menu_id" value="${ menu_id }" />
-      <table>
+      <table id="table1">
         <tr>
           <td><span class="red">*</span>제목</td>
           <td>
@@ -48,20 +55,12 @@
           </td>
         </tr>
         <tr>
-        <td>내 용</td>
-          <td><textarea name="content"></textarea></td>
-        </tr>
-        <tr>
           <td><span class="red">*</span>작성자</td>
           <td><input type="text" name="writer" /></td>
         </tr>
         <tr>
-          <td><span class="red">*</span>이름</td>
-          <td><input type="text" name="username" /></td>
-        </tr>
-        <tr>
-          <td>이메일</td>
-          <td><input type="email" name="email" /></td>
+        <td>내 용</td>
+          <td><textarea name="content"></textarea></td>
         </tr>
         <tr>
           <td colspan="2">

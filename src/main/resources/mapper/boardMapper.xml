@@ -56,6 +56,22 @@ namespace = "com.green.menus.mapper.MenuMapper" : interface 위치
      
   </update>
   
+  <insert id="insertBoard">
+    insert into board (
+	    idx,
+	    menu_id,
+	    title,
+	    content,
+	    writer
+	) values ( 
+	    (select nvl(max(idx), 0) + 1 from board ),
+	    #{menu_id},
+	    #{title},
+	    #{content},
+	    #{writer}
+	)
+  </insert>
+  
 </mapper>
 
 

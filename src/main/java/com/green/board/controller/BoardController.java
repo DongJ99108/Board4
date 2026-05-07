@@ -25,7 +25,7 @@ public class BoardController {
 	@Autowired
 	private BoardMapper boardMapper;
 	
-	// /Board/List
+	// /Board/List?menu_id=MENU01
 	@RequestMapping("/List")
 	public ModelAndView list( MenuDTO menuDto ) {
 		// 메뉴 전체 목록 조회 - menus.jsp
@@ -38,10 +38,14 @@ public class BoardController {
 		List<BoardDto> boardList = boardMapper.getBoardList( menuDto );
 		log.info("boardList:" + boardList); // 위에 Slf4j 덕분에 쓸 수 있는거임 log다음에 .을 찍으면 어떤 것을 쓸 수 있는지 볼 수 있음
 		
+		// 넘어온 menu_id
+		String menu_id = menuDto.getMenu_id();
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/list");
 		mv.addObject("menuList", menuList);
 		mv.addObject("boardList", boardList);
+		mv.addObject("menu_id", menu_id);
 		return mv;
 	}
 	@RequestMapping("/Delete")
@@ -80,12 +84,16 @@ public class BoardController {
 	@RequestMapping("/WriteForm")
 	public ModelAndView writeForm( BoardDto boardDto ) {
 		
+		// 메뉴 목록
+		List<MenuDTO> menuList = menuMapper.getMenuList();
+		
 		System.out.println("?/Board/WriteForm boardDto:" + boardDto);
 		String menu_id = boardDto.getMenu_id();
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/write");
 		mv.addObject( "menu_id", menu_id );
+		mv.addObject("menuList", menuList);
 		return mv;
 	}
 	
@@ -93,12 +101,19 @@ public class BoardController {
 	@RequestMapping("/Write")
 	public ModelAndView write( BoardDto boardDto ) {
 		
+		
+		
+		System.out.println( "write boardDto: " + boardDto );
+		// ?/Board/WriteForm boardDto:BoardDto(idx=0, menu_id=MENU01, title=null, content=null, writer=null, regdate=null, hit=0)
+		
 		// db 저장
+		boardMapper.insertBoard( boardDto );
+		
 		String menu_id = boardDto.getMenu_id();
 		
 		// 페이지 이동
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/Board/List?menu_id=" + menu_id );
+		mv.setViewName( "redirect:/Board/List?menu_id=" + menu_id );
 		return mv;
 	}
 

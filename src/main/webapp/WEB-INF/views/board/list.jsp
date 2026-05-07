@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="shortcut icon" href="/img/favicon-32x32.png"  type="image/x-icon" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet" />
 
 <style>
@@ -17,7 +18,7 @@
     padding : 5px;
     text-align: center;
   }
-  .list {
+  #list {
 	  td:nth-of-type(1) { width:100px; }
 	  td:nth-of-type(2) { width:300px; }
 	  td:nth-of-type(3) { width:100px; }
@@ -40,7 +41,34 @@
     margin-bottom : 150px
   }
   
+ /*  #table1 {
+    td {
+      &:nth-of-type(1) {
+        width : 150px;
+        background : black;
+        color : white;
+      }
+      &:nth-of-type(2) {
+        width : 150px;
+        background : white;
+        color : black;
+      }
+      &:nth-of-type(3) {
+        width : 150px;
+        background : black;
+        color : white;
+      }
+      &:nth-of-type(4) {
+        width : 150px;
+        background : black;
+        color : white;
+      }
+    }
+  } */
+  
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -49,7 +77,7 @@
 	
 	  
 	  <h2>게시물 목록</h2>
-	  <table>
+	  <table id="table1" class="table table-hover">
 	    <tr>
 	      <td>버노</td>
 	      <td>제목</td>

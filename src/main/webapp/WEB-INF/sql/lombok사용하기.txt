@@ -22,4 +22,38 @@ Lombok -> Dto의 생성자, Getter/Setter, ToString 자동으로 생성해준다
     아래나오는 체크
     Trust Artifact 모두 체크하고 Finish 클릭 
       -> Restart 버튼 클릭
+      
+사용하려면
+build.gradle 에 dependencies 를 추가
+dependencies {
+    ...
+	// lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	...
+}
+
+
+BoardDto.java
+
+// @Data // Getter/Setter/toString/HashCode, equals, BoardDto(기본생성자) 가 있다.
+// @Data -> JPA 사용 시 주의가 필요 toString() -> 문제로
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor // 기본생성자
+@AllArgsConstructor // 모든 인자 생성자
+public class BoardDto {
+	// Fields
+	private int idx;
+	private String menu_id;
+	private String title;
+	private String content;
+	private String writer;
+	private String regdate;
+	private int hit;
+}
+
+
+
 

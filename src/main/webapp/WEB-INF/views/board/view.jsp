@@ -114,7 +114,7 @@
         <tr>
           <td colspan="4">
             <a href="/Board/WriteForm?menu_id=${ board.menu_id }" class="btn btn-primary">새 글 쓰기</a>
-            <a href="/Board/Update?idx=${ board.idx }&menu_id=${ board.menu_id }" class="btn btn-warning">수정</a>
+            <a href="/Board/UpdateForm?idx=${ board.idx }&menu_id=${ board.menu_id }" class="btn btn-warning">수정</a>
             <a href="/Board/Delete?idx=${ board.idx }&menu_id=${ board.menu_id }" class="btn btn-danger">삭제</a>
             <a href="/Board/List?menu_id=${ board.menu_id }" class="btn btn-info">목록</a>
             <a href="/" class="btn btn-success">Home</a>

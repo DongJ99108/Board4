@@ -10,7 +10,6 @@
 
 <style>
   table { width:100%; }
-  #table1 { margin-bottom:150px;}
   td {
     padding: 5px 10px;
     text-align : center;
@@ -20,9 +19,10 @@
 	  border: 1px solid white;
 	   }
   }
-  tr:last-child > td {
-	background : white;
-	border: 1px solid black;
+  .dongj {
+    background:black;
+    color:white;
+    border: 1px solid white;
   }
   input[type=text], input[type=number], input[type=password], input[type=email] {
     width: 100%;
@@ -33,11 +33,56 @@
   input[name=userid] {
     width : 81.81%;
   }
-  textarea {
-    width  : 100%;
-    height : 300px;
+  
+  #table1 {
+  margin-bottom:150px;
+    td {
+      &:nth-of-type(1) {
+        width : 150px;
+        background : black;
+        color : white;
+      }
+      &:nth-of-type(2) {
+        width : 150px;
+        background : white;
+        color : black;
+      }
+      &:nth-of-type(3) {
+        width : 150px;
+        background : black;
+        color : white;
+        border-bottom : 1px solid white;
+      }
+      &:nth-of-type(4) {
+        width : 150px;
+        background : white;
+        color : black;
+      }
+    }
   }
 
+  #table1 tr:last-of-type > td {
+	background : white;
+	border: 1px solid black;
+  }
+  #table1 tr:nth-of-type(3) td:nth-of-type(2) {
+	text-align:left;
+  }
+  #table1 tr:nth-of-type(4) {
+	height:400px;
+	td:nth-of-type(2) {
+	  text-align:left;
+	  vertical-align:baseline;
+	}
+  }
+  textarea {
+    width:100%;
+    height:400px;
+  }
+  
+  input[name="title"], textarea {
+    padding:5px;
+  }
 </style>
 </head>
 <body>
@@ -52,7 +97,7 @@
           <td>글 번호</td>
           <td>${ board.idx }</td>
           <td>조회수</td>
-          <td>${board.hit }</td>
+          <td>${ board.hit }</td>
         </tr>
         <tr>
           <td>작성자</td>
@@ -74,7 +119,7 @@
           <td colspan="4">
             <input type="submit" value="수정" />
             <input type="button" value="목록" 
-             onclick="location.href='/Board/List?menu_id=${menu_id }'"/>
+             onclick="location.href='/Board/List?menu_id=${ menu_id }'"/>
           </td>
         </tr>
       </table>

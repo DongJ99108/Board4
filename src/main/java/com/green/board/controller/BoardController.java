@@ -139,16 +139,20 @@ public class BoardController {
 	public ModelAndView updateForm( BoardDto boardDto ) {
 		
 		// 전체 메뉴 목록 조회 : menus.jsp
-		List<MenuDTO> menuList = menuMapper.getMenuList();
+		List<MenuDTO> menuList  = menuMapper.getMenuList();
 		
 		// 넘어온 데이터(idx)로 수정할 정보(board)를 조회
-		BoardDto      board    = boardMapper.getBoard(boardDto);
+		BoardDto      board     = boardMapper.getBoard(boardDto);
 		
 		// 수정할 정보를 입력받는 페이지로 이동 : update.jsp
-		String        menu_id  = boardDto.getMenu_id();
-		ModelAndView  mv       = new ModelAndView();
+		String        menu_id   = boardDto.getMenu_id();
+		String        menu_name = menuMapper.getMenu_name(menu_id);
+		ModelAndView  mv        = new ModelAndView();
 		mv.setViewName( "board/update" );
 		mv.addObject("board", board);
+		mv.addObject("menuList", menuList);
+		mv.addObject("menu_id", menu_id);
+		mv.addObject("menu_name", menu_name);
 		return mv;
 		
 	}

@@ -53,7 +53,7 @@
 	  <%@include file="/WEB-INF/include/menus.jsp" %>
 	
 	  
-	  <h2>${menu.menu_name }게시물 목록</h2>
+	  <h2 class="h2">${menu.menu_name }게시물 목록</h2>
 	  <table id="table1" class="table table-hover">
 	    <tr>
 	      <td>버노</td>
